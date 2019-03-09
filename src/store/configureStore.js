@@ -1,6 +1,6 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducers from '../reducers';
+import createReducers from 'reducers/createReducer';
 
 function getDebugSessionKey() {
 	// You can write custom logic here!
@@ -23,7 +23,7 @@ export default function configureStore(initialState = {}, dependencies = {}) {
 	}
 
 	const store = createStore(
-		reducers,
+		createReducers(),
 		initialState,
 		compose(
 			applyMiddleware(...middlewares),
@@ -33,8 +33,8 @@ export default function configureStore(initialState = {}, dependencies = {}) {
 
 	// reducers hot reloading
 	if (module.hot) {
-		module.hot.accept('../reducers', () => {
-			store.replaceReducer(require('../reducers'));
+		module.hot.accept('../reducers/createReducer', () => {
+			store.replaceReducer(require('../reducers/createReducer')());
 		});
 	}
 	return store;
