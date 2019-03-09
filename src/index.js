@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import './index.css';
-import App from './App';
+import App from './containers/App';
 import configureStore from './store/configureStore';
 
 import * as serviceWorker from './serviceWorker';
@@ -12,7 +12,7 @@ const store = configureStore();
 
 const renderDevTools = () => {
 	if (process.env.NODE_ENV === 'development') {
-		const { default: DevTools } = require('./views/containers/DevTools');
+		const { default: DevTools } = require('./containers/DevTools');
 		return <DevTools />;
 	}
 	return null;

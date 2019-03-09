@@ -17,7 +17,7 @@ export default function configureStore(initialState = {}, dependencies = {}) {
 		const { logger } = require('redux-logger');
 		middlewares.push(logger);
 
-		const { default: DevTools } = require('../views/containers/DevTools');
+		const { default: DevTools } = require('../containers/DevTools');
 		const { persistState } = require('redux-devtools');
 		enhancers.push(DevTools.instrument(), persistState(getDebugSessionKey()));
 	}
