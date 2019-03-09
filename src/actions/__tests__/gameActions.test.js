@@ -35,9 +35,11 @@ describe('Game actions creators', () => {
 		const actual = GameActions.createMovePiece({ player: 1, x: 1, y: 1 });
 		const expected = {
 			type: ActionTypes.MOVE_PIECE,
-			player: 1,
-			x: 1,
-			y: 1
+			piece: {
+				player: 1,
+				x: 1,
+				y: 1
+			}
 		};
 		expect(actual).toEqual(expected);
 	});

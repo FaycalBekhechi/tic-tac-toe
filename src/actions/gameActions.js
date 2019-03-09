@@ -23,9 +23,11 @@ export const rewindMove = () => {
 export const createMovePiece = ({ player, x, y }) => {
 	return {
 		type: ActionTypes.MOVE_PIECE,
-		player,
-		x,
-		y
+		piece: {
+			player,
+			x,
+			y
+		}
 	};
 };
 
