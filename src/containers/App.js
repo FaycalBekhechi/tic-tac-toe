@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
 import { movePiece, checkCompletedGame } from 'actions/gameActions';
-import { gameStateSelector, currentPlayer } from 'selectors/selectors';
+import { gameStateSelector, currentPlayer, gameCompleted } from 'selectors/selectors';
 import BoardHeader from "components/BoardHeader";
 import Board from "../components/Board";
 import BoardActions from "components/BoardActions";
@@ -35,11 +35,11 @@ export class App extends React.Component {
 		//     </header>
 		//   </div>
 		// );
-		const { board, boardSize } = this.props;
+		const { board, boardSize, completed } = this.props;
 		return (
 			<div className="App">
 				<BoardHeader/>
-				<Board boardSize={boardSize} board={board} onCellClick={this.onCellClick}/>
+				<Board boardSize={boardSize} board={board} completed={completed} onCellClick={this.onCellClick}/>
 				<BoardActions/>
 			</div>
 		);
@@ -51,16 +51,19 @@ App.propTypes = {
 	checkCompletedGame: PropTypes.func.isRequired,
 	boardSize: PropTypes.number.isRequired,
 	board: PropTypes.array.isRequired,
-	currentPlayer: PropTypes.number.isRequired
+	currentPlayer: PropTypes.number.isRequired,
+	completed: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
 	const gameState = gameStateSelector(state);
 	const player = currentPlayer(state);
+	const completed = gameCompleted(state);
 	return {
 		boardSize: gameState.boardSize,
 		board: gameState.board,
-		currentPlayer: player
+		currentPlayer: player,
+		completed
 	};
 }
 
