@@ -24,13 +24,4 @@ describe('<Board/>', () => {
 			x: 0, y: 1
 		}));
 	});
-
-	it('should be in read mode when game completed', () => {
-		const board = [null, null, null, null];
-		const boardSize = 2;
-		const clickStub = jest.fn();
-		const renderedComponent = mount(<Board boardSize={boardSize} board={board} completed={true} onCellClick={clickStub}/>);
-		renderedComponent.find(BoardCell).at(2).prop('onClick')();
-		expect(clickStub).not.toHaveBeenCalled();
-	});
 });

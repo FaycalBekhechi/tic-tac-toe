@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import BoardCell from './BoardCell';
 import BoardRow from './BoardRow';
 
-function Board({ boardSize, board, onCellClick }) {
+function Board({ boardSize, board, onCellClick, completed }) {
 	const renderBoard = () => {
 		return board.reduce((rows, piece, index) => {
 			if (index % boardSize === 0) {
 				rows.push([]);
 			}
 			rows[rows.length - 1].push(
-				<BoardCell key={index} piece={piece} onClick={() => onCellClick({ x: index % boardSize, y: Math.floor(index / boardSize) })}/>
+				<BoardCell key={index} piece={piece} readonly={completed} onClick={() => onCellClick({ x: index % boardSize, y: Math.floor(index / boardSize) })}/>
 			);
 			return rows;
 		}, []);
@@ -30,7 +30,8 @@ function Board({ boardSize, board, onCellClick }) {
 Board.propTypes = {
 	boardSize: PropTypes.number.isRequired,
 	board: PropTypes.array.isRequired,
-	onCellClick: PropTypes.func
+	onCellClick: PropTypes.func,
+	completed: PropTypes.bool
 };
 
 export default Board;

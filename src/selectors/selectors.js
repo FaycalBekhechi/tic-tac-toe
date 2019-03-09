@@ -9,3 +9,10 @@ export const currentPlayer = createSelector(
 		return moves.length === 0 ? 1 : (moves[moves.length - 1].player % 2) + 1
 	}
 );
+
+export const gameCompleted = createSelector(
+	[gameStateSelector],
+	gameState => {
+		return gameState.draw === true || gameState.winner !== null;
+	}
+);

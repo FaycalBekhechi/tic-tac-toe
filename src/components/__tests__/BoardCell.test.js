@@ -14,4 +14,11 @@ describe('<BoardCell/>', () => {
 		renderedComponent.find('div').simulate('click');
 		expect(clickStub).toHaveBeenCalled();
 	});
+
+	it('should not handle click', () => {
+		const clickStub = jest.fn();
+		const renderedComponent = mount(<BoardCell onClick={clickStub} readonly={true}/>);
+		renderedComponent.find('div').simulate('click');
+		expect(clickStub).not.toHaveBeenCalled();
+	});
 });
