@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Figure from "../Figure";
+import Figure from '../Figure';
 
 describe('<Figure/>', () => {
 	it('should render a <span> tag', () => {

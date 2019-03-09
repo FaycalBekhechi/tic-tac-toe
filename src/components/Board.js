@@ -10,7 +10,8 @@ function Board({ boardSize, board, onCellClick, completed }) {
 				rows.push([]);
 			}
 			rows[rows.length - 1].push(
-				<BoardCell key={index} piece={piece} readonly={completed} onClick={() => onCellClick({ x: index % boardSize, y: Math.floor(index / boardSize) })}/>
+				<BoardCell key={index} piece={piece} readonly={completed}
+						   onClick={() => onCellClick({ x: index % boardSize, y: Math.floor(index / boardSize) })}/>
 			);
 			return rows;
 		}, []);

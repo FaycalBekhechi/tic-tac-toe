@@ -1,4 +1,4 @@
-import configureMockStore from "redux-mock-store";
+import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as ActionTypes from 'constants/ActionTypes';
 import * as GameActions from '../gameActions';

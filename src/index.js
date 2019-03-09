@@ -14,7 +14,7 @@ const store = configureStore();
 const renderDevTools = () => {
 	if (process.env.NODE_ENV === 'development') {
 		const { default: DevTools } = require('./containers/DevTools');
-		return <DevTools />;
+		return <DevTools/>;
 	}
 	return null;
 };
@@ -27,8 +27,8 @@ const render = () => {
 
 	ReactDOM.render(
 		<Provider store={store}>
-			<App />
-			{ renderDevTools() }
+			<App/>
+			{renderDevTools()}
 		</Provider>,
 		document.getElementById('root')
 	);

@@ -7,7 +7,7 @@ function EndGameScreen({ winner, draw }) {
 	let figures;
 	if (draw === true) {
 		message = 'DRAW!';
-		figures = [<Figure key={1} player={1}/>,<Figure key={2} player={2}/>]
+		figures = [<Figure key={1} player={1}/>, <Figure key={2} player={2}/>]
 	} else {
 		message = 'IS WINNER!';
 		figures = <Figure player={winner}/>;

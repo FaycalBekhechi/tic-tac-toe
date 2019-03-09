@@ -5,7 +5,7 @@ const mapPieceFigure = ['X', 'O'];
 
 function Figure({ player }) {
 	return (
-		<span>{ mapPieceFigure[player - 1] }</span>
+		<span>{mapPieceFigure[player - 1]}</span>
 	);
 }
 

@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import './App.css';
 import { movePiece, checkCompletedGame } from 'actions/gameActions';
 import { gameStateSelector, currentPlayer, gameCompleted } from 'selectors/selectors';
-import BoardHeader from "components/BoardHeader";
-import Board from "../components/Board";
-import BoardActions from "components/BoardActions";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import BoardHeader from 'components/BoardHeader';
+import Board from '../components/Board';
+import BoardActions from 'components/BoardActions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import EndGameScreen from '../components/EndGameScreen';
 
 export class App extends React.Component {
 	onCellClick = ({ x, y }) => {
@@ -41,6 +42,7 @@ export class App extends React.Component {
 				<BoardHeader/>
 				<Board boardSize={boardSize} board={board} completed={completed} onCellClick={this.onCellClick}/>
 				<BoardActions/>
+				{completed && <EndGameScreen/>}
 			</div>
 		);
 	}

@@ -10,6 +10,6 @@ export default createDevTools(
 		defaultPosition="right"
 		defaultIsVisible={false}
 	>
-		<LogMonitor theme="tomorrow" />
+		<LogMonitor theme="tomorrow"/>
 	</DockMonitor>
 );

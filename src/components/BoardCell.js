@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Figure from "./Figure";
+import Figure from './Figure';
 
 function BoardCell({ piece, onClick, readonly }) {
 	return (
 		<div className="board-cell" onClick={() => !readonly && onClick()}>
-			{ piece && <Figure player={piece.player}/> }
+			{piece && <Figure player={piece.player}/>}
 		</div>
 	);
 }
