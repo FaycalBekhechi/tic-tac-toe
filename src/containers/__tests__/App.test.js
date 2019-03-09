@@ -17,7 +17,8 @@ describe('<App/>', () => {
 			null, null, null,
 			null, null, null
 		],
-		currentPlayer: 1
+		currentPlayer: 1,
+		completed: false
 	};
 
 	it('renders without crashing', () => {
