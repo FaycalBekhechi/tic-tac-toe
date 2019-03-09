@@ -2,6 +2,6 @@ import React from 'react';
 
 export default function BoardHeader() {
 	return (
-		<div></div>
+		<h1>Tic Tac Toe</h1>
 	);
 }
