@@ -41,4 +41,26 @@ describe('selectors', () => {
 		const expected = 2;
 		expect(Selectors.currentPlayer(actualState)).toEqual(expected);
 	});
+
+	it('should select that the game is completed', () => {
+		const actualState = {
+			game: {
+				winner: null,
+				draw: true
+			}
+		};
+		const expected = true;
+		expect(Selectors.gameCompleted(actualState)).toEqual(expected);
+	});
+
+	it('should select that the game is not completed', () => {
+		const actualState = {
+			game: {
+				winner: null,
+				draw: false
+			}
+		};
+		const expected = false;
+		expect(Selectors.gameCompleted(actualState)).toEqual(expected);
+	});
 });
