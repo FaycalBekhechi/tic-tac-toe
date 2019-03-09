@@ -6,20 +6,29 @@ import { App } from '../App';
 import Board from 'components/Board';
 import Header from 'components/BoardHeader';
 import BoardActions from 'components/BoardActions';
+import EndGameScreen from 'components/EndGameScreen';
 
 describe('<App/>', () => {
-	const props = {
-		movePiece: () => {},
-		checkCompletedGame: () => {},
-		boardSize: 3,
-		board: [
-			null, null, null,
-			null, null, null,
-			null, null, null
-		],
-		currentPlayer: 1,
-		completed: false
-	};
+	let props;
+	beforeEach(() => {
+		props = {
+			movePiece: () => {
+			},
+			checkCompletedGame: () => {
+			},
+			boardSize: 3,
+			board: [
+				null, null, null,
+				null, null, null,
+				null, null, null
+			],
+			currentPlayer: 1,
+			completed: false,
+			winner: null,
+			draw: false
+		};
+	});
+
 
 	it('renders without crashing', () => {
 		const div = document.createElement('div');
@@ -40,5 +49,16 @@ describe('<App/>', () => {
 	it('should render the board', () => {
 		const renderedComponent = shallow(<App {...props}/>);
 		expect(renderedComponent.find(Board)).toHaveLength(1);
+	});
+
+	it('should render the end game screen', () => {
+		const actualProps = {
+			...props,
+			completed: true,
+			winner: 1,
+			draw: false
+		};
+		const renderedComponent = shallow(<App {...actualProps}/>);
+		expect(renderedComponent.find(EndGameScreen)).toHaveLength(1);
 	});
 });
