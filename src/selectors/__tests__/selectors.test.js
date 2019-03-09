@@ -21,4 +21,24 @@ describe('selectors', () => {
 		};
 		expect(Selectors.gameStateSelector(actualState)).toEqual(expected);
 	});
+
+	it('should select player 1', () => {
+		const actualState = {
+			game: {
+				moves: []
+			}
+		};
+		const expected = 1;
+		expect(Selectors.currentPlayer(actualState)).toEqual(expected);
+	});
+
+	it('should select player 2', () => {
+		const actualState = {
+			game: {
+				moves: [{ player: 1, x: 0, y: 0 }, { player: 2, x: 1, y: 1 }, { player: 1, x: 2, y: 0 }]
+			}
+		};
+		const expected = 2;
+		expect(Selectors.currentPlayer(actualState)).toEqual(expected);
+	});
 });
