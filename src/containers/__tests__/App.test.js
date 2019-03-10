@@ -16,16 +16,19 @@ describe('<App/>', () => {
 			},
 			checkCompletedGame: () => {
 			},
+			resetGame: () => {},
+			initGame: () => {},
 			boardSize: 3,
 			board: [
 				null, null, null,
 				null, null, null,
 				null, null, null
 			],
+			winner: null,
+			draw: false,
 			currentPlayer: 1,
 			completed: false,
-			winner: null,
-			draw: false
+			started: true
 		};
 	});
 
