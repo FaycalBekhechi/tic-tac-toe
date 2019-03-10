@@ -63,4 +63,24 @@ describe('selectors', () => {
 		const expected = false;
 		expect(Selectors.gameCompleted(actualState)).toEqual(expected);
 	});
+
+	it('should select that the game is not started', () => {
+		const actualState = {
+			game: {
+				boardSize: 0
+			}
+		};
+		const expected = false;
+		expect(Selectors.gameStarted(actualState)).toEqual(expected);
+	});
+
+	it('should select that the game is started', () => {
+		const actualState = {
+			game: {
+				boardSize: 2
+			}
+		};
+		const expected = true;
+		expect(Selectors.gameStarted(actualState)).toEqual(expected);
+	});
 });
