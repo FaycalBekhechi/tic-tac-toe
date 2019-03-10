@@ -53,11 +53,11 @@ export class App extends React.Component {
 		//     </header>
 		//   </div>
 		// );
-		const { board, boardSize, completed, draw, winner, started } = this.props;
+		const { board, boardSize, completed, draw, winner, started, scores } = this.props;
 		return (
 			<div className="App">
 				<BoardHeader/>
-				<ScorePanel player1Wins={1} player2Wins={1} draw={0}/>
+				<ScorePanel player1Wins={scores.player1} player2Wins={scores.player2} draw={scores.draw}/>
 				<div className="app-board-viewport">
 					{started && <Board boardSize={boardSize} board={board} completed={completed} onCellClick={this.onCellClick}/>}
 					{completed && <EndGameScreen draw={draw} winner={winner} completed={completed}/>}
@@ -82,6 +82,7 @@ App.propTypes = {
 	winner: PropTypes.number,
 	draw: PropTypes.bool.isRequired,
 	currentPlayer: PropTypes.number.isRequired,
+	scores: PropTypes.object.isRequired,
 	completed: PropTypes.bool.isRequired,
 	started: PropTypes.bool.isRequired
 };
@@ -97,6 +98,7 @@ function mapStateToProps(state) {
 		winner: gameState.winner,
 		draw: gameState.draw,
 		currentPlayer: player,
+		scores: gameState.scores,
 		completed,
 		started
 	};
