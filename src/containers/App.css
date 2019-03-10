@@ -129,6 +129,7 @@ h1 {
 }
 
 @keyframes end-game-screen-fade-in {
+    /* nice effect http://animista.net/play/entrances/slide-in-elliptic */
     0% {
         transform: translateY(-100%) rotateX(-30deg) scale(0);
         transform-origin: 50% 100%;
@@ -157,7 +158,7 @@ h1 {
 }
 
 .end-game-screen-figures {
-    flex: 0.2;
+    height: 20%;
     display: flex;
     justify-content: center;
 }

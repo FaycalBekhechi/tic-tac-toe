@@ -2,6 +2,7 @@ import * as ActionTypes from 'constants/ActionTypes';
 
 const initialState = {
 	started: false,
+	// TODO store all the board state each move instead of the current board and all the moves
 	moves: [],
 	board: [],
 	boardSize: 0,
