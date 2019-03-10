@@ -7,6 +7,7 @@ import Board from 'components/Board';
 import Header from 'components/BoardHeader';
 import BoardActions from 'components/BoardActions';
 import EndGameScreen from 'components/EndGameScreen';
+import ScorePanel from 'components/ScorePanel';
 
 describe('<App/>', () => {
 	let props;
@@ -31,6 +32,11 @@ describe('<App/>', () => {
 			winner: null,
 			draw: false,
 			currentPlayer: 1,
+			scores: {
+				player1: 0,
+				player2: 0,
+				draw: 0,
+			},
 			completed: false,
 			started: true
 		};
@@ -56,6 +62,11 @@ describe('<App/>', () => {
 	it('should render the board', () => {
 		const renderedComponent = shallow(<App {...props}/>);
 		expect(renderedComponent.find(Board)).toHaveLength(1);
+	});
+
+	it('should render the score panel', () => {
+		const renderedComponent = shallow(<App {...props}/>);
+		expect(renderedComponent.find(ScorePanel)).toHaveLength(1);
 	});
 
 	it('should render the end game screen', () => {
