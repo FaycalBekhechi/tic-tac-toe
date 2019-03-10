@@ -53,11 +53,11 @@ export class App extends React.Component {
 		//     </header>
 		//   </div>
 		// );
-		const { board, boardSize, completed, draw, winner, started, scores } = this.props;
+		const { board, boardSize, completed, draw, winner, started, scores, currentPlayer } = this.props;
 		return (
 			<div className="App">
 				<BoardHeader/>
-				<ScorePanel player1Wins={scores.player1} player2Wins={scores.player2} draw={scores.draw}/>
+				<ScorePanel player1Wins={scores.player1} player2Wins={scores.player2} draw={scores.draw} currentPlayer={!completed ? currentPlayer : null}/>
 				<div className="app-board-viewport">
 					{started && <Board boardSize={boardSize} board={board} completed={completed} onCellClick={this.onCellClick}/>}
 					{completed && <EndGameScreen draw={draw} winner={winner} completed={completed}/>}

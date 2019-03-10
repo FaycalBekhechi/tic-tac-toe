@@ -75,8 +75,26 @@ h1 {
     margin-bottom: 4vmin;
 }
 
-.score-panel > div {
+.player-score {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-score-cursor {
+    display: inline-block;
+    border-color: #b71c1c transparent;
+    border-style: solid;
+    border-width: 0.5rem 0.5rem 0 0.5rem;
+    height: 0;
+    width: 0;
+    margin-bottom: 10px;
+    opacity: 0;
+}
+
+.player-score-cursor-show {
+    opacity: 1;
 }
 
 .score-panel-figure {
