@@ -16,8 +16,12 @@ describe('<App/>', () => {
 			},
 			checkCompletedGame: () => {
 			},
-			resetGame: () => {},
-			initGame: () => {},
+			resetGame: () => {
+			},
+			initGame: () => {
+			},
+			rewindMove: () => {
+			},
 			boardSize: 3,
 			board: [
 				null, null, null,
