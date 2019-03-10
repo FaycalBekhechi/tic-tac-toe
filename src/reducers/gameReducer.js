@@ -1,11 +1,17 @@
 import * as ActionTypes from 'constants/ActionTypes';
 
 const initialState = {
+	started: false,
 	moves: [],
 	board: [],
 	boardSize: 0,
 	winner: null,
-	draw: false
+	draw: false,
+	scores: {
+		player1: 0,
+		player2: 0,
+		draw: 0
+	}
 };
 
 function movePiece(state, piece) {
@@ -39,19 +45,40 @@ function rewindMove(state) {
 
 export default function gameReducer(state = initialState, action) {
 	switch (action.type) {
-		case ActionTypes.INIT_GAME:
+		case ActionTypes.CONFIGURE_GAME:
 			return {
 				...state,
+				started: false,
+				moves: [],
 				board: Array(action.boardSize * action.boardSize).fill(null),
-				boardSize: action.boardSize
+				boardSize: action.boardSize,
+				winner: null,
+				draw: false
+			};
+		case ActionTypes.START_GAME:
+			return {
+				...state,
+				started: true
 			};
 		case ActionTypes.RESET_GAME:
-			return initialState;
+			return {
+				...state,
+				started: false,
+				moves: [],
+				board: state.board.slice().fill(null),
+				winner: null,
+				draw: false
+			};
 		case ActionTypes.COMPLETE_GAME:
 			return {
 				...state,
 				winner: action.winner,
-				draw: action.draw
+				draw: action.draw,
+				scores: {
+					player1: action.winner === 1 ? state.scores.player1 + 1 : state.scores.player1,
+					player2: action.winner === 2 ? state.scores.player2 + 1 : state.scores.player2,
+					draw: action.draw === true ? state.scores.draw + 1 : state.scores.draw
+				}
 			};
 		case ActionTypes.MOVE_PIECE:
 			return movePiece(state, action.piece);

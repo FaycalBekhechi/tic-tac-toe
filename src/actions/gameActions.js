@@ -1,10 +1,16 @@
 import * as ActionTypes from 'constants/ActionTypes';
 import { gameStateSelector } from 'selectors/selectors';
 
-export const initGame = ({ boardSize }) => {
+export const configureGame = ({ boardSize }) => {
 	return {
-		type: ActionTypes.INIT_GAME,
+		type: ActionTypes.CONFIGURE_GAME,
 		boardSize
+	}
+};
+
+export const startGame = () => {
+	return {
+		type: ActionTypes.START_GAME
 	};
 };
 

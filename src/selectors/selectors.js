@@ -20,6 +20,6 @@ export const gameCompleted = createSelector(
 export const gameStarted = createSelector(
 	[gameStateSelector],
 	gameState => {
-		return gameState.boardSize > 0;
+		return gameState.started === true;
 	}
 );

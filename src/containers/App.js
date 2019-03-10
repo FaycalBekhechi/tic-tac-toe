@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
-import { movePiece, checkCompletedGame, resetGame, initGame, rewindMove } from 'actions/gameActions';
+import { movePiece, checkCompletedGame, resetGame, startGame, rewindMove } from 'actions/gameActions';
 import { gameStateSelector, currentPlayer, gameCompleted, gameStarted } from 'selectors/selectors';
 import wait from 'utils/wait';
 import BoardHeader from 'components/BoardHeader';
@@ -22,13 +22,17 @@ export class App extends React.Component {
 
 	onResetClick = async () => {
 		this.props.resetGame();
-		await wait();
-		this.props.initGame({ boardSize: 3 });
+		await wait(); // trigger render twice, so the animations will play
+		this.props.startGame();
 	};
 
 	onRewindMoveClick = () => {
 		this.props.rewindMove();
 	};
+
+	componentWillMount() {
+		this.props.startGame();
+	}
 
 	render() {
 		// return (
@@ -71,7 +75,7 @@ App.propTypes = {
 	movePiece: PropTypes.func.isRequired,
 	checkCompletedGame: PropTypes.func.isRequired,
 	resetGame: PropTypes.func.isRequired,
-	initGame: PropTypes.func.isRequired,
+	startGame: PropTypes.func.isRequired,
 	rewindMove: PropTypes.func.isRequired,
 	boardSize: PropTypes.number.isRequired,
 	board: PropTypes.array.isRequired,
@@ -103,7 +107,7 @@ function mapDispatchToProps(dispatch) {
 		movePiece,
 		checkCompletedGame,
 		resetGame,
-		initGame,
+		startGame,
 		rewindMove
 	}, dispatch);
 }
