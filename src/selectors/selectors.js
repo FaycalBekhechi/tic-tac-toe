@@ -16,3 +16,10 @@ export const gameCompleted = createSelector(
 		return gameState.draw === true || gameState.winner !== null;
 	}
 );
+
+export const gameStarted = createSelector(
+	[gameStateSelector],
+	gameState => {
+		return gameState.boardSize > 0;
+	}
+);
