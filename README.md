@@ -6,20 +6,20 @@ First, ensure to have node and npm installed locally.
 
 Clone the project
 
-```console
+```sh
 git clone git@github.com:FaycalBekhechi/tic-tac-toe.git tictactoe
 cd tictactoe
 ```
 
 Install node modules:
 
-```console
+```sh
 npm install
 ```
 
 Then run the local development server:
 
-```console
+```sh
 npm run start
 ```
 
@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) or use your host address ip 
 
 To run unit tests:
 
-```console
+```sh
 npm run test
 ```
 
