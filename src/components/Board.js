@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import BoardCell from './BoardCell';
 import BoardRow from './BoardRow';
 
@@ -17,8 +18,13 @@ function Board({ boardSize, board, onCellClick, completed }) {
 		}, []);
 	};
 
+	const className = classnames({
+		'board': true,
+		'board-show': !completed,
+		'board-hide': completed
+	});
 	return (
-		<div>
+		<div className={className}>
 			{renderBoard().map((row, index) => (
 				<BoardRow key={index}>
 					{row}

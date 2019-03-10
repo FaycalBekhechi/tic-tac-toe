@@ -1,5 +1,19 @@
 .App {
-    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+    flex-direction: column;
+}
+
+@media (min-width: 480px) {
+    .App {
+        max-width: 480px;
+    }
+}
+
+@media (max-width: 479px) {
+    .App {
+        max-width: 100%;
+    }
 }
 
 .App-logo {
@@ -23,6 +37,12 @@
     color: #61dafb;
 }
 
+h1 {
+    color: rgb(66,66,66);
+    margin-top: 10px;
+    font-size: 2.5rem;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
@@ -32,15 +52,116 @@
     }
 }
 
-.board-row {
-    margin: 0 auto;
-    width: 300px;
-    height: 100px;
+.app-board-viewport {
+    position: relative;
+}
+
+/* nice trick https://codepen.io/ItScofield/pen/PNVZoQ */
+.app-board-viewport::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+@keyframes end-game-screen-fade-in {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.end-game-screen {
+    animation: end-game-screen-fade-in .5s ease-in;
+    animation-fill-mode: forwards;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+}
+
+.board {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+@keyframes board-fade-out {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes board-fade-in {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.board-show {
+    animation: board-fade-in .5s ease-in;
+    animation-fill-mode: forwards;
+}
+
+.board-hide {
+    animation: board-fade-out .5s ease-in;
+    animation-fill-mode: forwards;
+}
+
+.board-row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
 }
 
 .board-cell {
-    display: inline-block;
-    border: 1px solid black;
+    display: flex;
     flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-row .board-cell:first-child {
+    border-left: none;
+}
+
+.board-row .board-cell:last-child {
+    border-right: none;
+}
+
+.board .board-row:last-child {
+    border-bottom: none;
+}
+
+.board-row .board-cell {
+    border-right: 5px solid #616161;
+}
+
+.board-row {
+    border-bottom: 5px solid #616161;
+}
+
+.board-cell .board-cell-content {
+    flex: 0.85;
 }

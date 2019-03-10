@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Figure from './Figure';
 
 function EndGameScreen({ winner, draw }) {
@@ -12,8 +13,11 @@ function EndGameScreen({ winner, draw }) {
 		message = 'IS WINNER!';
 		figures = <Figure player={winner}/>;
 	}
+	const className = classnames({
+		'end-game-screen': true
+	});
 	return (
-		<div>
+		<div className={className}>
 			<div>{figures}</div>
 			<div>{message}</div>
 		</div>

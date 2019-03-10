@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function BoardActions() {
+export default function BoardActions({ children }) {
 	return (
-		<div></div>
+		<div>{children}</div>
 	);
 }

@@ -5,7 +5,9 @@ import Figure from './Figure';
 function BoardCell({ piece, onClick, readonly }) {
 	return (
 		<div className="board-cell" onClick={() => !readonly && onClick()}>
-			{piece && <Figure player={piece.player}/>}
+			<div className="board-cell-content">
+				{piece && <Figure player={piece.player}/>}
+			</div>
 		</div>
 	);
 }
