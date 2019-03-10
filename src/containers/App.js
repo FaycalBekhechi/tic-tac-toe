@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
-import { movePiece, checkCompletedGame, resetGame, initGame } from 'actions/gameActions';
+import { movePiece, checkCompletedGame, resetGame, initGame, rewindMove } from 'actions/gameActions';
 import { gameStateSelector, currentPlayer, gameCompleted, gameStarted } from 'selectors/selectors';
+import wait from 'utils/wait';
 import BoardHeader from 'components/BoardHeader';
-import Board from '../components/Board';
+import ScorePanel from 'components/ScorePanel';
+import Board from 'components/Board';
 import BoardActions from 'components/BoardActions';
+import BoardActionButton from 'components/BoardActionButton';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import EndGameScreen from '../components/EndGameScreen';
-
-import { FaBeer } from 'react-icons/fa';
+import EndGameScreen from 'components/EndGameScreen';
 
 export class App extends React.Component {
 	onCellClick = ({ x, y }) => {
@@ -21,7 +22,12 @@ export class App extends React.Component {
 
 	onResetClick = async () => {
 		this.props.resetGame();
+		await wait();
 		this.props.initGame({ boardSize: 3 });
+	};
+
+	onRewindMoveClick = () => {
+		this.props.rewindMove();
 	};
 
 	render() {
@@ -47,12 +53,14 @@ export class App extends React.Component {
 		return (
 			<div className="App">
 				<BoardHeader/>
+				<ScorePanel player1Wins={1} player2Wins={1} draw={0}/>
 				<div className="app-board-viewport">
 					{started && <Board boardSize={boardSize} board={board} completed={completed} onCellClick={this.onCellClick}/>}
 					{completed && <EndGameScreen draw={draw} winner={winner} completed={completed}/>}
 				</div>
 				<BoardActions>
-					<span onClick={this.onResetClick}><FaBeer/></span>
+					<BoardActionButton onClick={this.onResetClick}>RESTART</BoardActionButton>
+					{!completed && <BoardActionButton onClick={this.onRewindMoveClick}>REWIND</BoardActionButton>}
 				</BoardActions>
 			</div>
 		);
@@ -64,6 +72,7 @@ App.propTypes = {
 	checkCompletedGame: PropTypes.func.isRequired,
 	resetGame: PropTypes.func.isRequired,
 	initGame: PropTypes.func.isRequired,
+	rewindMove: PropTypes.func.isRequired,
 	boardSize: PropTypes.number.isRequired,
 	board: PropTypes.array.isRequired,
 	winner: PropTypes.number,
@@ -94,7 +103,8 @@ function mapDispatchToProps(dispatch) {
 		movePiece,
 		checkCompletedGame,
 		resetGame,
-		initGame
+		initGame,
+		rewindMove
 	}, dispatch);
 }
 
