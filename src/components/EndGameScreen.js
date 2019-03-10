@@ -18,8 +18,8 @@ function EndGameScreen({ winner, draw }) {
 	});
 	return (
 		<div className={className}>
-			<div>{figures}</div>
-			<div>{message}</div>
+			<div className="end-game-screen-figures">{figures}</div>
+			<div className="end-game-screen-message">{message}</div>
 		</div>
 	);
 }

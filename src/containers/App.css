@@ -1,18 +1,16 @@
 .App {
     margin: 0 auto;
-    padding: 10px;
     flex-direction: column;
+    max-width: 480px;
+    width: 90vw;
 }
 
-@media (min-width: 480px) {
-    .App {
-        max-width: 480px;
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
     }
-}
-
-@media (max-width: 479px) {
-    .App {
-        max-width: 100%;
+    to {
+        transform: rotate(360deg);
     }
 }
 
@@ -39,17 +37,8 @@
 
 h1 {
     color: rgb(66,66,66);
-    margin-top: 10px;
+    margin: 2vh 0 4vh 0;
     font-size: 2.5rem;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .app-board-viewport {
@@ -65,24 +54,42 @@ h1 {
 
 @keyframes end-game-screen-fade-in {
     0% {
-        transform: scale(0.5);
+        transform: translateY(-100%) rotateX(-30deg) scale(0);
+        transform-origin: 50% 100%;
         opacity: 0;
     }
     100% {
-        transform: scale(1);
-        opacity: 1
+        transform: translateY(0) rotateX(0) scale(1);
+        transform-origin: 50% 300%;
+        opacity: 1;
     }
 }
 
 .end-game-screen {
-    animation: end-game-screen-fade-in .5s ease-in;
-    animation-fill-mode: forwards;
+    animation: end-game-screen-fade-in .5s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    animation-fill-mode: both;
+    animation-delay: .4s;
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.end-game-screen-figures {
+    flex: 0.2;
+    display: flex;
+}
+
+.end-game-screen-message {
+    text-align: center;
+    color: rgb(66,66,66);
+    font-weight: 700;
+    font-size: 2rem;
 }
 
 .board {
@@ -120,12 +127,12 @@ h1 {
 }
 
 .board-show {
-    animation: board-fade-in .5s ease-in;
+    animation: board-fade-in .4s cubic-bezier(0.250, 0.460, 0.450, 0.940);
     animation-fill-mode: forwards;
 }
 
 .board-hide {
-    animation: board-fade-out .5s ease-in;
+    animation: board-fade-out .3s ease-out;
     animation-fill-mode: forwards;
 }
 
@@ -164,4 +171,31 @@ h1 {
 
 .board-cell .board-cell-content {
     flex: 0.85;
+}
+
+.figure {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.figure svg {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes figure-appear {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.figure-appear {
+    animation: figure-appear .3s cubic-bezier(.5,1.8,.1,1.1);
 }

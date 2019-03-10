@@ -6,7 +6,7 @@ function BoardCell({ piece, onClick, readonly }) {
 	return (
 		<div className="board-cell" onClick={() => !readonly && onClick()}>
 			<div className="board-cell-content">
-				{piece && <Figure player={piece.player}/>}
+				{piece && <Figure player={piece.player} className="figure-appear"/>}
 			</div>
 		</div>
 	);

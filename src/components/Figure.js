@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 const mapPieceFigure = [
 	<svg aria-label="X" role="img" viewBox="0 0 128 128">
@@ -12,14 +13,16 @@ const mapPieceFigure = [
 	</svg>
 ];
 
-function Figure({ player }) {
+function Figure({ player, className }) {
+	const classname = classnames('figure', className);
 	return (
-		<span>{mapPieceFigure[player - 1]}</span>
+		<span className={classname}>{mapPieceFigure[player - 1]}</span>
 	);
 }
 
 Figure.propTypes = {
-	player: PropTypes.number.isRequired
+	player: PropTypes.number.isRequired,
+	className: PropTypes.string
 };
 
 export default Figure;
