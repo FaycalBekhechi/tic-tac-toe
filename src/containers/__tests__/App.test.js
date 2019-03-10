@@ -18,7 +18,7 @@ describe('<App/>', () => {
 			},
 			resetGame: () => {
 			},
-			initGame: () => {
+			startGame: () => {
 			},
 			rewindMove: () => {
 			},

@@ -6,11 +6,19 @@ import * as GameActions from '../gameActions';
 const mockStore = configureMockStore([thunk]);
 
 describe('Game actions creators', () => {
-	it('should create init game action', () => {
-		const actual = GameActions.initGame({ boardSize: 4 });
+	it('should create configuration game action', () => {
+		const actual = GameActions.configureGame({ boardSize: 4 });
 		const expected = {
-			type: ActionTypes.INIT_GAME,
+			type: ActionTypes.CONFIGURE_GAME,
 			boardSize: 4
+		};
+		expect(actual).toEqual(expected);
+	});
+
+	it('should create start game action', () => {
+		const actual = GameActions.startGame();
+		const expected = {
+			type: ActionTypes.START_GAME
 		};
 		expect(actual).toEqual(expected);
 	});

@@ -67,7 +67,7 @@ describe('selectors', () => {
 	it('should select that the game is not started', () => {
 		const actualState = {
 			game: {
-				boardSize: 0
+				started: false
 			}
 		};
 		const expected = false;
@@ -77,7 +77,7 @@ describe('selectors', () => {
 	it('should select that the game is started', () => {
 		const actualState = {
 			game: {
-				boardSize: 2
+				started: true
 			}
 		};
 		const expected = true;
