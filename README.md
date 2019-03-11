@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To run the game
 
-First, ensure to have node and npm installed locally.
+First, ensure you have node and npm installed locally.
 
 Clone the project
 
